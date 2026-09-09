@@ -5265,7 +5265,9 @@ async function openPendingProofFile() {
                 method: "GET",
 
                 headers:
-                    authorizationHeaders()
+                    authorizationHeaders(),
+
+                cache: "no-store"    
             }
         );
 

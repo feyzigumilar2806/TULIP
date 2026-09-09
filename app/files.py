@@ -3,6 +3,7 @@
 # ============================================================
 
 import mimetypes
+
 from pathlib import Path
 from typing import Annotated
 from typing import Literal
@@ -12,6 +13,7 @@ from fastapi import Depends
 from fastapi import HTTPException
 from fastapi import Query
 from fastapi.responses import FileResponse
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -34,6 +36,22 @@ router = APIRouter(
 
 
 # ============================================================
+# HEADER KEAMANAN FILE
+# MENCEGAH BROWSER MENYIMPAN BUKTI DALAM CACHE
+# ============================================================
+
+PROOF_SECURITY_HEADERS = {
+    "Cache-Control": (
+        "no-store, no-cache, must-revalidate, "
+        "private, max-age=0"
+    ),
+    "Pragma": "no-cache",
+    "Expires": "0",
+    "X-Content-Type-Options": "nosniff",
+}
+
+
+# ============================================================
 # MEMERIKSA AKSES TRANSAKSI
 # ============================================================
 
@@ -45,27 +63,53 @@ def get_accessible_transaction(
 
     transaction = database.scalar(
         select(Transaction).where(
-            Transaction.id == transaction_id
+            Transaction.id
+            == transaction_id
         )
     )
 
     if transaction is None:
         raise HTTPException(
             status_code=404,
-            detail="Transaksi tidak ditemukan."
+            detail=(
+                "Transaksi tidak ditemukan."
+            )
         )
 
     if (
         current_user.role
         == UserRole.BRANCH_HEAD
-        and transaction.branch_id
-        != current_user.branch_id
+    ):
+        if current_user.branch_id is None:
+            raise HTTPException(
+                status_code=403,
+                detail=(
+                    "Akun tidak memiliki "
+                    "akses cabang."
+                )
+            )
+
+        if (
+            transaction.branch_id
+            != current_user.branch_id
+        ):
+            raise HTTPException(
+                status_code=403,
+                detail=(
+                    "Anda tidak memiliki akses "
+                    "ke transaksi cabang lain."
+                )
+            )
+
+    elif current_user.role not in (
+        UserRole.HQ,
+        UserRole.SUPERADMIN
     ):
         raise HTTPException(
             status_code=403,
             detail=(
                 "Anda tidak memiliki akses "
-                "ke transaksi cabang lain."
+                "ke bukti transaksi."
             )
         )
 
@@ -88,18 +132,25 @@ def validate_file_path(
         stored_path
     ).resolve()
 
-    if not file_path.is_relative_to(
-        upload_root
-    ):
+    try:
+        file_path.relative_to(
+            upload_root
+        )
+
+    except ValueError:
         raise HTTPException(
             status_code=403,
-            detail="Lokasi file tidak valid."
+            detail=(
+                "Lokasi file tidak valid."
+            )
         )
 
     if not file_path.is_file():
         raise HTTPException(
             status_code=404,
-            detail="File bukti tidak ditemukan."
+            detail=(
+                "File bukti tidak ditemukan."
+            )
         )
 
     return file_path
@@ -134,10 +185,12 @@ def get_proof_file(
         default=False
     )
 ):
-    transaction = get_accessible_transaction(
-        transaction_id,
-        current_user,
-        database
+    transaction = (
+        get_accessible_transaction(
+            transaction_id,
+            current_user,
+            database
+        )
     )
 
     if proof_type == "handover":
@@ -185,5 +238,6 @@ def get_proof_file(
             "attachment"
             if download
             else "inline"
-        )
+        ),
+        headers=PROOF_SECURITY_HEADERS
     )

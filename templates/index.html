@@ -127,7 +127,10 @@
                 <div class="service-options">
                     <button
                         id="openHandoverButton"
-                        class="service-card service-card-primary"
+                        class="
+                            service-card
+                            service-card-primary
+                        "
                         type="button"
                     >
                         <span class="service-number">
@@ -191,7 +194,12 @@
     >
         <header class="public-header">
             <div class="application-brand">
-                <div class="brand-symbol brand-symbol-small">
+                <div
+                    class="
+                        brand-symbol
+                        brand-symbol-small
+                    "
+                >
                     T
                 </div>
 
@@ -236,7 +244,7 @@
                 class="handover-form"
                 enctype="multipart/form-data"
             >
-                <!-- Informasi karyawan -->
+                <!-- INFORMASI KARYAWAN -->
 
                 <section class="form-card">
                     <div class="form-card-header">
@@ -260,7 +268,9 @@
                         <div class="form-group">
                             <label for="branchId">
                                 Lokasi/Cabang
-                                <span class="required">*</span>
+                                <span class="required">
+                                    *
+                                </span>
                             </label>
 
                             <select
@@ -277,7 +287,9 @@
                         <div class="form-group">
                             <label for="employeeName">
                                 Nama Karyawan
-                                <span class="required">*</span>
+                                <span class="required">
+                                    *
+                                </span>
                             </label>
 
                             <input
@@ -293,7 +305,9 @@
                         <div class="form-group">
                             <label for="employeeNik">
                                 NIK
-                                <span class="required">*</span>
+                                <span class="required">
+                                    *
+                                </span>
                             </label>
 
                             <input
@@ -309,7 +323,9 @@
                         <div class="form-group">
                             <label for="unit">
                                 Unit Kerja
-                                <span class="required">*</span>
+                                <span class="required">
+                                    *
+                                </span>
                             </label>
 
                             <select
@@ -330,7 +346,9 @@
                         >
                             <label for="operationSubunit">
                                 Sub-unit Operation
-                                <span class="required">*</span>
+                                <span class="required">
+                                    *
+                                </span>
                             </label>
 
                             <select
@@ -346,7 +364,7 @@
                 </section>
 
 
-                <!-- Rincian pecahan -->
+                <!-- RINCIAN PECAHAN -->
 
                 <section class="form-card">
                     <div class="form-card-header">
@@ -460,7 +478,7 @@
                 </section>
 
 
-                <!-- Bukti dan catatan -->
+                <!-- BUKTI DAN CATATAN -->
 
                 <section class="form-card">
                     <div class="form-card-header">
@@ -501,7 +519,11 @@
                             name="handover_photo"
                             class="hidden-file-input"
                             type="file"
-                            accept="image/jpeg,image/png,image/webp"
+                            accept="
+                                image/jpeg,
+                                image/png,
+                                image/webp
+                            "
                             required
                         >
                     </div>
@@ -522,7 +544,7 @@
                 </section>
 
 
-                <!-- Konfirmasi -->
+                <!-- KONFIRMASI -->
 
                 <div class="form-submit-section">
                     <p>
@@ -532,7 +554,10 @@
 
                     <button
                         id="submitHandoverButton"
-                        class="primary-button submit-button"
+                        class="
+                            primary-button
+                            submit-button
+                        "
                         type="submit"
                     >
                         <span id="submitHandoverText">
@@ -642,10 +667,12 @@
 
                 <button
                     id="backToLandingButton"
-                    class="outline-dark-button"
+                    class="back-home-button"
                     type="button"
                 >
-                    Kembali ke Halaman Utama
+                    <span>
+                        Kembali ke Halaman Utama
+                    </span>
                 </button>
             </div>
         </section>
@@ -695,10 +722,15 @@
 
             <button
                 id="backFromLoginButton"
-                class="outline-dark-button login-back-button"
+                class="
+                    back-home-button
+                    login-back-button
+                "
                 type="button"
             >
-                Kembali ke Halaman Utama
+                <span>
+                    Kembali ke Halaman Utama
+                </span>
             </button>
         </section>
 
@@ -823,7 +855,12 @@
     >
         <header class="application-header">
             <div class="application-brand">
-                <div class="brand-symbol brand-symbol-small">
+                <div
+                    class="
+                        brand-symbol
+                        brand-symbol-small
+                    "
+                >
                     T
                 </div>
 
@@ -859,153 +896,466 @@
             </div>
         </header>
 
+
+        <!-- NAVIGASI DASHBOARD -->
+
         <nav class="dashboard-navigation">
-            <button id="dashboardNavigationButton" class="dashboard-navigation-button active" type="button">
+            <button
+                id="dashboardNavigationButton"
+                class="
+                    dashboard-navigation-button
+                    active
+                "
+                type="button"
+            >
                 Dashboard
             </button>
-            <button id="userManagementNavigationButton" class="dashboard-navigation-button" type="button" hidden>
+
+            <button
+                id="userManagementNavigationButton"
+                class="dashboard-navigation-button"
+                type="button"
+                hidden
+            >
                 Kelola Akun
             </button>
         </nav>
 
-        <section id="dashboardView" class="dashboard-view">
+
+        <!-- DASHBOARD TRANSAKSI -->
+
+        <section
+            id="dashboardView"
+            class="dashboard-view"
+        >
             <div class="dashboard-heading">
                 <div>
-                    <p class="login-card-label">RINGKASAN TRANSAKSI</p>
-                    <h1>Dashboard TULIP</h1>
-                    <p id="dashboardDescription">Memuat data transaksi...</p>
+                    <p class="login-card-label">
+                        RINGKASAN TRANSAKSI
+                    </p>
+
+                    <h1>
+                        Dashboard TULIP
+                    </h1>
+
+                    <p id="dashboardDescription">
+                        Memuat data transaksi...
+                    </p>
                 </div>
-                <button id="refreshDashboardButton" class="outline-dark-button" type="button">
+
+                <button
+                    id="refreshDashboardButton"
+                    class="outline-dark-button"
+                    type="button"
+                >
                     Muat Ulang
                 </button>
             </div>
 
+
+            <!-- FILTER DATA -->
+
             <section class="dashboard-panel">
                 <div class="panel-heading">
-                    <h2>Filter Data</h2>
-                    <p>Cari transaksi berdasarkan tanggal, nama karyawan, atau cabang.</p>
+                    <h2>
+                        Filter Data
+                    </h2>
+
+                    <p>
+                        Cari transaksi berdasarkan tanggal,
+                        nama karyawan, atau cabang.
+                    </p>
                 </div>
-                <form id="dashboardFilterForm" class="dashboard-filter-form">
+
+                <form
+                    id="dashboardFilterForm"
+                    class="dashboard-filter-form"
+                >
                     <div class="form-group">
-                        <label for="filterStartDate">Tanggal Mulai</label>
-                        <input id="filterStartDate" name="start_date" type="date">
+                        <label for="filterStartDate">
+                            Tanggal Mulai
+                        </label>
+
+                        <input
+                            id="filterStartDate"
+                            name="start_date"
+                            type="date"
+                        >
                     </div>
+
                     <div class="form-group">
-                        <label for="filterEndDate">Tanggal Akhir</label>
-                        <input id="filterEndDate" name="end_date" type="date">
+                        <label for="filterEndDate">
+                            Tanggal Akhir
+                        </label>
+
+                        <input
+                            id="filterEndDate"
+                            name="end_date"
+                            type="date"
+                        >
                     </div>
+
                     <div class="form-group">
-                        <label for="filterEmployeeName">Nama Karyawan</label>
-                        <input id="filterEmployeeName" name="employee_name" type="text" maxlength="200" placeholder="Cari nama">
+                        <label for="filterEmployeeName">
+                            Nama Karyawan
+                        </label>
+
+                        <input
+                            id="filterEmployeeName"
+                            name="employee_name"
+                            type="text"
+                            maxlength="200"
+                            placeholder="Cari nama"
+                        >
                     </div>
-                    <div id="filterBranchGroup" class="form-group" hidden>
-                        <label for="filterBranchId">Cabang</label>
-                        <select id="filterBranchId" name="branch_id">
-                            <option value="">Semua cabang</option>
+
+                    <div
+                        id="filterBranchGroup"
+                        class="form-group"
+                        hidden
+                    >
+                        <label for="filterBranchId">
+                            Cabang
+                        </label>
+
+                        <select
+                            id="filterBranchId"
+                            name="branch_id"
+                        >
+                            <option value="">
+                                Semua cabang
+                            </option>
                         </select>
                     </div>
+
                     <div class="dashboard-filter-actions">
-                        <button class="primary-button" type="submit">Terapkan</button>
-                        <button id="resetDashboardFilterButton" class="outline-dark-button" type="button">Reset</button>
+                        <button
+                            class="primary-button"
+                            type="submit"
+                        >
+                            Terapkan
+                        </button>
+
+                        <button
+                            id="resetDashboardFilterButton"
+                            class="outline-dark-button"
+                            type="button"
+                        >
+                            Reset
+                        </button>
+
+                        <button
+                            id="downloadExcelButton"
+                            class="excel-download-button"
+                            type="button"
+                        >
+                            <span aria-hidden="true">
+                                &darr;
+                            </span>
+
+                            <span>
+                                Download Excel
+                            </span>
+                        </button>
                     </div>
                 </form>
             </section>
 
+
+            <!-- RINGKASAN TRANSAKSI -->
+
             <section class="summary-grid">
                 <article class="summary-card">
-                    <span>Jumlah Transaksi</span>
-                    <strong id="summaryTransactionCount">0</strong>
-                    <small>Transaksi tercatat</small>
+                    <span>
+                        Jumlah Transaksi
+                    </span>
+
+                    <strong id="summaryTransactionCount">
+                        0
+                    </strong>
+
+                    <small>
+                        Transaksi tercatat
+                    </small>
                 </article>
+
                 <article class="summary-card">
-                    <span>Total Penyerahan</span>
-                    <strong id="summaryTotalAmount">Rp0</strong>
-                    <small>Seluruh transaksi</small>
+                    <span>
+                        Total Penyerahan
+                    </span>
+
+                    <strong id="summaryTotalAmount">
+                        Rp0
+                    </strong>
+
+                    <small>
+                        Seluruh transaksi
+                    </small>
                 </article>
-                <article class="summary-card summary-card-success">
-                    <span>Sudah Diganti</span>
-                    <strong id="summaryPaidAmount">Rp0</strong>
-                    <small>Bukti transfer tersedia</small>
+
+                <article
+                    class="
+                        summary-card
+                        summary-card-success
+                    "
+                >
+                    <span>
+                        Sudah Diganti
+                    </span>
+
+                    <strong id="summaryPaidAmount">
+                        Rp0
+                    </strong>
+
+                    <small>
+                        Bukti transfer tersedia
+                    </small>
                 </article>
-                <article class="summary-card summary-card-warning">
-                    <span>Menunggu Penggantian</span>
-                    <strong id="summaryPendingAmount">Rp0</strong>
-                    <small>Belum diganti</small>
+
+                <article
+                    class="
+                        summary-card
+                        summary-card-warning
+                    "
+                >
+                    <span>
+                        Menunggu Penggantian
+                    </span>
+
+                    <strong id="summaryPendingAmount">
+                        Rp0
+                    </strong>
+
+                    <small>
+                        Belum diganti
+                    </small>
                 </article>
             </section>
 
+
+            <!-- REKAP PECAHAN -->
+
             <section class="dashboard-panel">
                 <div class="panel-heading">
-                    <h2>Rekap Pecahan</h2>
-                    <p>Jumlah keping dan nominal setiap pecahan uang logam.</p>
+                    <h2>
+                        Rekap Pecahan
+                    </h2>
+
+                    <p>
+                        Jumlah keping dan nominal setiap
+                        pecahan uang logam.
+                    </p>
                 </div>
+
                 <div class="coin-summary-grid">
                     <article class="coin-summary-card">
-                        <span>Rp100</span>
-                        <strong id="denominationQty100">0 keping</strong>
-                        <small id="denominationAmount100">Rp0</small>
+                        <span>
+                            Rp100
+                        </span>
+
+                        <strong id="denominationQty100">
+                            0 keping
+                        </strong>
+
+                        <small id="denominationAmount100">
+                            Rp0
+                        </small>
                     </article>
+
                     <article class="coin-summary-card">
-                        <span>Rp200</span>
-                        <strong id="denominationQty200">0 keping</strong>
-                        <small id="denominationAmount200">Rp0</small>
+                        <span>
+                            Rp200
+                        </span>
+
+                        <strong id="denominationQty200">
+                            0 keping
+                        </strong>
+
+                        <small id="denominationAmount200">
+                            Rp0
+                        </small>
                     </article>
+
                     <article class="coin-summary-card">
-                        <span>Rp500</span>
-                        <strong id="denominationQty500">0 keping</strong>
-                        <small id="denominationAmount500">Rp0</small>
+                        <span>
+                            Rp500
+                        </span>
+
+                        <strong id="denominationQty500">
+                            0 keping
+                        </strong>
+
+                        <small id="denominationAmount500">
+                            Rp0
+                        </small>
                     </article>
+
                     <article class="coin-summary-card">
-                        <span>Rp1.000</span>
-                        <strong id="denominationQty1000">0 keping</strong>
-                        <small id="denominationAmount1000">Rp0</small>
+                        <span>
+                            Rp1.000
+                        </span>
+
+                        <strong id="denominationQty1000">
+                            0 keping
+                        </strong>
+
+                        <small id="denominationAmount1000">
+                            Rp0
+                        </small>
                     </article>
                 </div>
             </section>
 
+
+            <!-- DAFTAR TRANSAKSI -->
+
             <section class="dashboard-panel">
                 <div class="panel-heading">
-                    <h2>Daftar Transaksi</h2>
-                    <p id="transactionTableInformation">Memuat transaksi...</p>
+                    <h2>
+                        Daftar Transaksi
+                    </h2>
+
+                    <p id="transactionTableInformation">
+                        Memuat transaksi...
+                    </p>
                 </div>
+
                 <div class="table-container">
                     <table class="transaction-table">
                         <thead>
                             <tr>
-                                <th>Transaksi</th><th>Karyawan</th><th>Cabang/Unit</th><th>Rincian</th><th>Total</th><th>Status</th><th>Bukti</th>
+                                <th>
+                                    Transaksi
+                                </th>
+
+                                <th>
+                                    Karyawan
+                                </th>
+
+                                <th>
+                                    Cabang/Unit
+                                </th>
+
+                                <th>
+                                    Rincian
+                                </th>
+
+                                <th>
+                                    Total
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Bukti/Tindakan
+                                </th>
                             </tr>
                         </thead>
+
                         <tbody id="transactionTableBody">
-                            <tr><td class="empty-table" colspan="7">Memuat data transaksi...</td></tr>
+                            <tr>
+                                <td
+                                    class="empty-table"
+                                    colspan="7"
+                                >
+                                    Memuat data transaksi...
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </section>
         </section>
 
-        <section id="userManagementView" class="dashboard-view" hidden>
+
+        <!-- PENGELOLAAN AKUN SUPERADMIN -->
+
+        <section
+            id="userManagementView"
+            class="dashboard-view"
+            hidden
+        >
             <div class="dashboard-heading">
                 <div>
-                    <p class="login-card-label">SUPERADMIN</p>
-                    <h1>Pengelolaan Akun</h1>
-                    <p>Buat, ubah, nonaktifkan, dan reset password pengguna TULIP.</p>
+                    <p class="login-card-label">
+                        SUPERADMIN
+                    </p>
+
+                    <h1>
+                        Pengelolaan Akun
+                    </h1>
+
+                    <p>
+                        Buat, ubah, nonaktifkan, dan reset
+                        password pengguna TULIP.
+                    </p>
                 </div>
-                <button id="openCreateUserButton" class="primary-button dashboard-heading-button" type="button">
+
+                <button
+                    id="openCreateUserButton"
+                    class="
+                        primary-button
+                        dashboard-heading-button
+                    "
+                    type="button"
+                >
                     Buat Akun Baru
                 </button>
             </div>
+
             <section class="dashboard-panel">
                 <div class="panel-heading">
-                    <h2>Daftar Pengguna</h2>
-                    <p>Password pengguna tidak ditampilkan dalam daftar ini.</p>
+                    <h2>
+                        Daftar Pengguna
+                    </h2>
+
+                    <p>
+                        Password pengguna tidak ditampilkan
+                        dalam daftar ini.
+                    </p>
                 </div>
+
                 <div class="table-container">
                     <table class="transaction-table">
                         <thead>
-                            <tr><th>Username</th><th>Nama</th><th>Peran</th><th>Cabang</th><th>Status</th><th>Tindakan</th></tr>
+                            <tr>
+                                <th>
+                                    Username
+                                </th>
+
+                                <th>
+                                    Nama
+                                </th>
+
+                                <th>
+                                    Peran
+                                </th>
+
+                                <th>
+                                    Cabang
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Tindakan
+                                </th>
+                            </tr>
                         </thead>
+
                         <tbody id="userTableBody">
-                            <tr><td class="empty-table" colspan="6">Memuat daftar pengguna...</td></tr>
+                            <tr>
+                                <td
+                                    class="empty-table"
+                                    colspan="6"
+                                >
+                                    Memuat daftar pengguna...
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
