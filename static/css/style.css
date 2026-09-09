@@ -1,0 +1,2662 @@
+/* ==========================================================
+   01 — WARNA DAN PENGATURAN UTAMA
+========================================================== */
+
+:root {
+    --yellow: #ffd400;
+    --yellow-dark: #e6bf00;
+    --black: #111111;
+    --black-soft: #1d1d1d;
+    --white: #ffffff;
+    --background: #f4f4f4;
+    --border: #dddddd;
+    --text: #202020;
+    --text-soft: #666666;
+    --success: #198754;
+    --danger: #c62828;
+    --shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    --radius-large: 24px;
+    --radius-medium: 14px;
+    --radius-small: 8px;
+}
+
+
+/* ==========================================================
+   02 — RESET DASAR
+========================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--text);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+select,
+label[for="handoverPhoto"] {
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ==========================================================
+   03 — IDENTITAS TULIP
+========================================================== */
+
+.brand {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.brand-symbol {
+    display: grid;
+    width: 62px;
+    height: 62px;
+    flex-shrink: 0;
+    color: var(--yellow);
+    background: var(--black);
+    border-radius: 16px;
+    place-items: center;
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.brand-symbol-small {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    font-size: 22px;
+}
+
+.brand-company {
+    margin-bottom: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+.brand-name {
+    font-size: 32px;
+    line-height: 1;
+}
+
+.login-label,
+.login-card-label {
+    margin-bottom: 14px;
+    color: #8d7700;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+
+/* ==========================================================
+   04 — HALAMAN PILIHAN UTAMA
+========================================================== */
+
+.landing-page {
+    display: grid;
+    grid-template-columns:
+        minmax(440px, 1.05fr)
+        minmax(440px, 0.95fr);
+    min-height: 100vh;
+}
+
+.landing-brand-section {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    padding: 55px 6vw 45px;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    background: var(--yellow);
+}
+
+.landing-brand-section::before {
+    position: absolute;
+    top: -180px;
+    right: -150px;
+    width: 520px;
+    height: 520px;
+    content: "";
+    border: 75px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.landing-brand-section::after {
+    position: absolute;
+    bottom: -260px;
+    left: -210px;
+    width: 550px;
+    height: 550px;
+    content: "";
+    border: 75px solid rgba(17, 17, 17, 0.05);
+    border-radius: 50%;
+}
+
+.landing-brand-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+.landing-introduction {
+    max-width: 650px;
+    margin: 70px 0;
+}
+
+.landing-introduction h2 {
+    margin-bottom: 22px;
+    font-size: clamp(40px, 4.5vw, 66px);
+    line-height: 1.05;
+}
+
+.landing-introduction > p:last-child {
+    max-width: 590px;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.landing-footer {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.landing-action-section {
+    display: flex;
+    min-width: 0;
+    padding: 50px clamp(35px, 6vw, 100px);
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+}
+
+.landing-action-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.landing-action-header {
+    margin-bottom: 36px;
+}
+
+.landing-action-header h2 {
+    max-width: 520px;
+    margin-bottom: 14px;
+    font-size: clamp(32px, 3vw, 44px);
+    line-height: 1.15;
+}
+
+.landing-action-header > p:last-child {
+    color: var(--text-soft);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   05 — PILIHAN LAYANAN
+========================================================== */
+
+.service-options {
+    display: grid;
+    gap: 18px;
+}
+
+.service-card {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr) 30px;
+    gap: 16px;
+    width: 100%;
+    min-height: 125px;
+    padding: 24px;
+    align-items: center;
+    color: var(--text);
+    text-align: left;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        transform 0.2s;
+}
+
+.service-card:hover {
+    border-color: var(--yellow-dark);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.11);
+    transform: translateY(-3px);
+}
+
+.service-card-primary {
+    color: var(--black);
+    background: var(--yellow);
+    border-color: var(--yellow);
+}
+
+.service-number {
+    align-self: start;
+    padding-top: 5px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.service-content {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.service-content strong {
+    font-size: 21px;
+}
+
+.service-content small {
+    color: var(--text-soft);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.service-card-primary .service-content small {
+    color: #4a4200;
+}
+
+.service-arrow {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+/* ==========================================================
+   06 — HALAMAN LOGIN
+========================================================== */
+
+.login-page {
+    display: grid;
+    grid-template-columns:
+        minmax(420px, 1.1fr)
+        minmax(420px, 0.9fr);
+    min-height: 100vh;
+}
+
+.login-information {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    padding: 54px 8vw 54px 6vw;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    color: var(--black);
+    background: var(--yellow);
+}
+
+.login-information::before {
+    position: absolute;
+    top: -160px;
+    right: -160px;
+    width: 430px;
+    height: 430px;
+    content: "";
+    border: 70px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+}
+
+.login-information::after {
+    position: absolute;
+    bottom: -220px;
+    left: -170px;
+    width: 480px;
+    height: 480px;
+    content: "";
+    border: 75px solid rgba(17, 17, 17, 0.06);
+    border-radius: 50%;
+}
+
+.login-introduction {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 60px 0;
+}
+
+.login-introduction h2 {
+    max-width: 680px;
+    margin-bottom: 22px;
+    font-size: clamp(38px, 5vw, 68px);
+    line-height: 1.03;
+}
+
+.login-introduction > p:last-child {
+    max-width: 620px;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.login-back-button {
+    position: relative;
+    z-index: 1;
+    align-self: flex-start;
+}
+
+.login-form-section {
+    display: flex;
+    min-height: 100vh;
+    padding: 50px clamp(30px, 7vw, 110px);
+    flex-direction: column;
+    justify-content: center;
+    background:
+        linear-gradient(
+            145deg,
+            var(--black-soft),
+            var(--black)
+        );
+}
+
+.login-card {
+    width: 100%;
+    max-width: 520px;
+    margin: auto;
+    padding: clamp(30px, 4vw, 48px);
+    background: var(--white);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow);
+}
+
+.login-card-header {
+    margin-bottom: 34px;
+}
+
+.login-card-header h2 {
+    margin-bottom: 12px;
+    font-size: 34px;
+}
+
+.login-card-header > p:last-child {
+    color: var(--text-soft);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+}
+
+.login-footer {
+    display: flex;
+    width: 100%;
+    max-width: 520px;
+    margin: 25px auto 0;
+    justify-content: space-between;
+    color: #bdbdbd;
+    font-size: 11px;
+}
+
+
+/* ==========================================================
+   07 — INPUT FORM
+========================================================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0 16px;
+    color: var(--text);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+    outline: none;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.form-group input,
+.form-group select {
+    height: 52px;
+}
+
+.form-group textarea {
+    min-height: 110px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--yellow-dark);
+    box-shadow: 0 0 0 4px rgba(255, 212, 0, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a5a5a5;
+}
+
+.password-input-wrapper {
+    position: relative;
+}
+
+.password-input-wrapper input {
+    padding-right: 100px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 13px;
+    padding: 6px 7px;
+    color: #5c5c5c;
+    background: transparent;
+    border: 0;
+    transform: translateY(-50%);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.password-toggle:hover {
+    color: var(--black);
+}
+
+.required {
+    color: var(--danger);
+}
+
+
+/* ==========================================================
+   08 — TOMBOL
+========================================================== */
+
+.primary-button {
+    width: 100%;
+    min-height: 54px;
+    margin-top: 4px;
+    padding: 0 22px;
+    color: var(--black);
+    background: var(--yellow);
+    border: 0;
+    border-radius: var(--radius-small);
+    font-weight: 800;
+    transition:
+        background 0.2s,
+        box-shadow 0.2s,
+        transform 0.2s;
+}
+
+.primary-button:hover {
+    background: var(--yellow-dark);
+    box-shadow: 0 10px 25px rgba(230, 191, 0, 0.28);
+    transform: translateY(-1px);
+}
+
+.primary-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+    transform: none;
+}
+
+.secondary-button {
+    min-height: 42px;
+    padding: 0 20px;
+    color: var(--black);
+    background: var(--yellow);
+    border: 0;
+    border-radius: var(--radius-small);
+    font-weight: 700;
+}
+
+.outline-button {
+    min-height: 42px;
+    padding: 0 20px;
+    color: var(--white);
+    background: transparent;
+    border: 1px solid #666666;
+    border-radius: var(--radius-small);
+    font-weight: 700;
+}
+
+.outline-button:hover {
+    color: var(--black);
+    background: var(--yellow);
+    border-color: var(--yellow);
+}
+
+.outline-dark-button {
+    min-height: 46px;
+    padding: 0 22px;
+    color: var(--black);
+    background: transparent;
+    border: 1px solid var(--black);
+    border-radius: var(--radius-small);
+    font-weight: 700;
+}
+
+.outline-dark-button:hover {
+    background: rgba(17, 17, 17, 0.08);
+}
+
+
+/* ==========================================================
+   09 — NOTIFIKASI
+========================================================== */
+
+.notification {
+    position: fixed;
+    z-index: 1000;
+    top: 25px;
+    left: 50%;
+    display: flex;
+    gap: 20px;
+    width: calc(100% - 40px);
+    max-width: 520px;
+    padding: 15px 18px;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--white);
+    background: var(--black);
+    border-radius: var(--radius-small);
+    box-shadow: var(--shadow);
+    transform: translateX(-50%);
+}
+
+.notification.success {
+    background: var(--success);
+}
+
+.notification.error {
+    background: var(--danger);
+}
+
+.notification-close {
+    color: inherit;
+    background: transparent;
+    border: 0;
+    font-size: 22px;
+}
+
+
+/* ==========================================================
+   10 — HEADER FORM DAN DASHBOARD
+========================================================== */
+
+.public-header,
+.application-header {
+    position: sticky;
+    z-index: 50;
+    top: 0;
+    display: flex;
+    padding: 15px 5vw;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--white);
+    background: var(--black);
+}
+
+.application-brand,
+.application-user {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.application-brand > div:last-child,
+.application-user > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.application-brand small,
+.application-user small {
+    color: #bdbdbd;
+}
+
+
+/* ==========================================================
+   11 — FORM PENYERAHAN
+========================================================== */
+
+.form-page {
+    min-height: 100vh;
+    background: var(--background);
+}
+
+.form-page-content {
+    width: min(1000px, calc(100% - 40px));
+    margin: 50px auto 80px;
+}
+
+.form-heading {
+    margin-bottom: 35px;
+}
+
+.form-heading h1 {
+    margin-bottom: 12px;
+    font-size: clamp(34px, 5vw, 50px);
+}
+
+.form-heading > p:last-child {
+    color: var(--text-soft);
+    line-height: 1.6;
+}
+
+.handover-form {
+    display: grid;
+    gap: 25px;
+}
+
+.form-card {
+    padding: clamp(25px, 4vw, 40px);
+    background: var(--white);
+    border-radius: var(--radius-medium);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
+}
+
+.form-card-header {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 30px;
+    padding-bottom: 23px;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-step {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    color: var(--black);
+    background: var(--yellow);
+    border-radius: 10px;
+    place-items: center;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.form-card-header h2 {
+    margin-bottom: 7px;
+    font-size: 22px;
+}
+
+.form-card-header p {
+    color: var(--text-soft);
+    font-size: 14px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+
+/* ==========================================================
+   12 — PECAHAN UANG LOGAM
+========================================================== */
+
+.denomination-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.denomination-item {
+    padding: 18px;
+    text-align: center;
+    background: #f7f7f7;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+}
+
+.denomination-item label {
+    display: block;
+    margin-bottom: 13px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.denomination-item input {
+    width: 100%;
+    height: 48px;
+    padding: 0 10px;
+    text-align: center;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+    outline: none;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.denomination-item input:focus {
+    border-color: var(--yellow-dark);
+    box-shadow: 0 0 0 4px rgba(255, 212, 0, 0.2);
+}
+
+.denomination-item span {
+    display: block;
+    margin-top: 9px;
+    color: var(--text-soft);
+    font-size: 12px;
+}
+
+.total-card {
+    display: flex;
+    margin-top: 22px;
+    padding: 22px 25px;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--black);
+    background: var(--yellow);
+    border-radius: var(--radius-medium);
+}
+
+.total-card span {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.total-card strong {
+    font-size: 28px;
+}
+
+
+/* ==========================================================
+   13 — UPLOAD FILE
+========================================================== */
+
+.file-upload {
+    display: flex;
+    min-height: 150px;
+    padding: 25px;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #fafafa;
+    border: 2px dashed #bdbdbd;
+    border-radius: var(--radius-medium);
+    transition:
+        background 0.2s,
+        border-color 0.2s;
+}
+
+.file-upload:hover {
+    background: #fffbea;
+    border-color: var(--yellow-dark);
+}
+
+.file-upload-title {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.file-upload-name {
+    color: var(--text-soft);
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.hidden-file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* ==========================================================
+   14 — BAGIAN SIMPAN FORM
+========================================================== */
+
+.form-submit-section {
+    display: flex;
+    gap: 25px;
+    padding: 25px 30px;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--black);
+    border-radius: var(--radius-medium);
+}
+
+.form-submit-section p {
+    max-width: 520px;
+    color: #cfcfcf;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.submit-button {
+    width: auto;
+    min-width: 220px;
+    margin: 0;
+}
+
+
+/* ==========================================================
+   15 — HALAMAN TRANSAKSI BERHASIL
+========================================================== */
+
+.success-page {
+    display: grid;
+    min-height: 100vh;
+    padding: 30px 20px;
+    background:
+        linear-gradient(
+            145deg,
+            var(--yellow),
+            #ffe66b
+        );
+    place-items: center;
+}
+
+.success-card {
+    width: min(680px, 100%);
+    padding: clamp(30px, 5vw, 55px);
+    text-align: center;
+    background: var(--white);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow);
+}
+
+.success-icon {
+    display: grid;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 25px;
+    color: var(--yellow);
+    background: var(--black);
+    border-radius: 50%;
+    place-items: center;
+    font-size: 36px;
+    font-weight: 800;
+}
+
+.success-card h1 {
+    margin-bottom: 13px;
+    font-size: clamp(30px, 5vw, 43px);
+}
+
+.success-card > p:not(.login-card-label) {
+    color: var(--text-soft);
+    line-height: 1.6;
+}
+
+.transaction-number-card {
+    margin: 28px 0;
+    padding: 20px;
+    background: #f5f5f5;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+}
+
+.transaction-number-card span {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-soft);
+    font-size: 12px;
+}
+
+.transaction-number-card strong {
+    font-size: clamp(18px, 4vw, 25px);
+    overflow-wrap: anywhere;
+}
+
+.success-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+    text-align: left;
+}
+
+.success-details > div {
+    padding: 17px;
+    background: #fafafa;
+    border-radius: var(--radius-small);
+}
+
+.success-details span {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--text-soft);
+    font-size: 12px;
+}
+
+.success-details strong {
+    font-size: 14px;
+}
+
+.success-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+
+/* ==========================================================
+   16 — HALAMAN SETELAH LOGIN
+========================================================== */
+
+.application-page {
+    min-height: 100vh;
+    background: var(--background);
+}
+
+.application-content {
+    width: min(1200px, calc(100% - 40px));
+    margin: 50px auto;
+}
+
+.welcome-card {
+    padding: 40px;
+    background: var(--white);
+    border-left: 8px solid var(--yellow);
+    border-radius: var(--radius-medium);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.welcome-card h1 {
+    margin-bottom: 15px;
+}
+
+.welcome-card > p:last-child {
+    color: var(--text-soft);
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   17 — RESPONSIVE TABLET
+========================================================== */
+
+@media (max-width: 1050px) {
+    .landing-page,
+    .login-page {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .landing-brand-section,
+    .login-information {
+        padding: 45px;
+    }
+
+    .landing-action-section,
+    .login-form-section {
+        padding: 40px;
+    }
+
+    .denomination-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ==========================================================
+   18 — RESPONSIVE TELEPON
+========================================================== */
+
+@media (max-width: 760px) {
+    .landing-page,
+    .login-page {
+        display: block;
+    }
+
+    .landing-brand-section,
+    .login-information {
+        display: flex;
+        min-height: auto;
+        padding: 30px 24px 45px;
+    }
+
+    .landing-introduction,
+    .login-introduction {
+        margin: 55px 0;
+    }
+
+    .landing-introduction h2,
+    .login-introduction h2 {
+        font-size: 38px;
+    }
+
+    .landing-introduction > p:last-child,
+    .login-introduction > p:last-child {
+        font-size: 15px;
+    }
+
+    .landing-footer {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .landing-action-section {
+        min-height: 520px;
+        padding: 45px 20px;
+    }
+
+    .landing-action-header h2 {
+        font-size: 32px;
+    }
+
+    .service-card {
+        grid-template-columns: 35px minmax(0, 1fr) 22px;
+        gap: 10px;
+        min-height: 115px;
+        padding: 18px;
+    }
+
+    .service-content strong {
+        font-size: 18px;
+    }
+
+    .login-form-section {
+        min-height: auto;
+        padding: 35px 20px;
+    }
+
+    .login-card {
+        padding: 30px 23px;
+        border-radius: 18px;
+    }
+
+    .login-card-header h2 {
+        font-size: 29px;
+    }
+
+    .public-header,
+    .application-header {
+        padding: 13px 18px;
+    }
+
+    .application-brand small {
+        display: none;
+    }
+
+    .application-user {
+        align-items: flex-end;
+    }
+
+    .application-user > div {
+        text-align: right;
+    }
+
+    .form-page-content {
+        width: calc(100% - 28px);
+        margin: 30px auto 50px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .denomination-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .total-card {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-submit-section {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+
+    .success-details,
+    .success-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .application-content {
+        width: calc(100% - 30px);
+        margin: 25px auto;
+    }
+
+    .welcome-card {
+        padding: 25px;
+    }
+}
+
+/* ==========================================================
+   19 — NAVIGASI DASHBOARD
+========================================================== */
+
+.dashboard-navigation {
+    position: sticky;
+    z-index: 40;
+    top: 72px;
+    display: flex;
+    gap: 8px;
+    padding: 0 5vw;
+    background: var(--black);
+    border-top: 1px solid #333333;
+}
+
+.dashboard-navigation-button {
+    padding: 16px 18px;
+    color: #bdbdbd;
+    background: transparent;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    font-weight: 700;
+}
+
+.dashboard-navigation-button:hover {
+    color: var(--white);
+}
+
+.dashboard-navigation-button.active {
+    color: var(--yellow);
+    border-bottom-color: var(--yellow);
+}
+
+
+/* ==========================================================
+   20 — AREA DASHBOARD
+========================================================== */
+
+.dashboard-view {
+    width: min(1400px, calc(100% - 50px));
+    margin: 42px auto 80px;
+}
+
+.dashboard-heading {
+    display: flex;
+    gap: 30px;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.dashboard-heading h1 {
+    margin-bottom: 10px;
+    font-size: clamp(34px, 5vw, 50px);
+}
+
+.dashboard-heading > div > p:last-child {
+    color: var(--text-soft);
+    line-height: 1.6;
+}
+
+.dashboard-heading-button {
+    width: auto;
+    min-width: 190px;
+    margin: 0;
+}
+
+
+/* ==========================================================
+   21 — PANEL DASHBOARD
+========================================================== */
+
+.dashboard-panel {
+    margin-bottom: 24px;
+    padding: 28px;
+    background: var(--white);
+    border-radius: var(--radius-medium);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+}
+
+.panel-heading {
+    margin-bottom: 23px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.panel-heading-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.panel-heading h2 {
+    margin-bottom: 7px;
+    font-size: 21px;
+}
+
+.panel-heading p {
+    color: var(--text-soft);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   22 — FILTER DASHBOARD
+========================================================== */
+
+.dashboard-filter-form {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(150px, 1fr))
+        auto;
+    gap: 16px;
+    align-items: end;
+}
+
+.dashboard-filter-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.dashboard-filter-actions .primary-button,
+.dashboard-filter-actions .outline-dark-button {
+    width: auto;
+    min-height: 52px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   23 — KARTU RINGKASAN
+========================================================== */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.summary-card {
+    position: relative;
+    min-width: 0;
+    padding: 25px;
+    overflow: hidden;
+    background: var(--white);
+    border-top: 5px solid var(--black);
+    border-radius: var(--radius-medium);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+}
+
+.summary-card-success {
+    border-top-color: var(--success);
+}
+
+.summary-card-warning {
+    border-top-color: var(--yellow-dark);
+}
+
+.summary-card span {
+    display: block;
+    margin-bottom: 18px;
+    color: var(--text-soft);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.summary-card strong {
+    display: block;
+    margin-bottom: 9px;
+    font-size: clamp(23px, 2.5vw, 31px);
+    overflow-wrap: anywhere;
+}
+
+.summary-card small {
+    color: #8a8a8a;
+    font-size: 11px;
+}
+
+
+/* ==========================================================
+   24 — REKAP PECAHAN
+========================================================== */
+
+.coin-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.coin-summary-card {
+    padding: 21px;
+    background: #f8f8f8;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+}
+
+.coin-summary-card span {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 7px 11px;
+    color: var(--black);
+    background: var(--yellow);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.coin-summary-card strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 21px;
+}
+
+.coin-summary-card small {
+    color: var(--text-soft);
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   25 — TABEL DASHBOARD
+========================================================== */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.transaction-table {
+    width: 100%;
+    min-width: 1050px;
+    border-collapse: collapse;
+}
+
+.transaction-table th {
+    padding: 14px 13px;
+    color: #555555;
+    text-align: left;
+    background: #f4f4f4;
+    border-bottom: 2px solid var(--border);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.transaction-table td {
+    padding: 16px 13px;
+    vertical-align: top;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.transaction-table tbody tr:hover {
+    background: #fffdf2;
+}
+
+.table-primary-text {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.table-secondary-text {
+    display: block;
+    color: var(--text-soft);
+    font-size: 11px;
+}
+
+.empty-table {
+    padding: 50px !important;
+    color: var(--text-soft);
+    text-align: center !important;
+}
+
+
+/* ==========================================================
+   26 — STATUS DAN TOMBOL TABEL
+========================================================== */
+
+.status-badge {
+    display: inline-block;
+    padding: 7px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.status-pending {
+    color: #6a5700;
+    background: #fff2ad;
+}
+
+.status-paid {
+    color: #11633e;
+    background: #d9f5e7;
+}
+
+.status-active {
+    color: #11633e;
+    background: #d9f5e7;
+}
+
+.status-inactive {
+    color: #8b1d1d;
+    background: #f8dddd;
+}
+
+.table-actions {
+    display: flex;
+    min-width: 150px;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.table-action-button {
+    min-height: 34px;
+    padding: 0 11px;
+    color: var(--text);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.table-action-button:hover {
+    background: var(--yellow);
+    border-color: var(--yellow);
+}
+
+.table-action-button-primary {
+    color: var(--black);
+    background: var(--yellow);
+    border-color: var(--yellow);
+}
+
+
+/* ==========================================================
+   27 — MODAL
+========================================================== */
+
+.modal {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    display: grid;
+    padding: 25px;
+    overflow-y: auto;
+    place-items: center;
+}
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.modal-card {
+    position: relative;
+    z-index: 1;
+    width: min(680px, 100%);
+    max-height: calc(100vh - 50px);
+    padding: clamp(25px, 4vw, 38px);
+    overflow-y: auto;
+    background: var(--white);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow);
+}
+
+.modal-header {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 27px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-header h2 {
+    font-size: 27px;
+}
+
+.modal-close-button {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    color: var(--text);
+    background: #eeeeee;
+    border: 0;
+    border-radius: 50%;
+    font-size: 25px;
+    line-height: 1;
+}
+
+.modal-close-button:hover {
+    background: var(--yellow);
+}
+
+.modal-information {
+    margin-bottom: 20px;
+    padding: 15px;
+    color: var(--text-soft);
+    background: #f6f6f6;
+    border-radius: var(--radius-small);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.modal-actions .primary-button {
+    width: auto;
+    margin: 0;
+}
+
+
+/* ==========================================================
+   28 — RESPONSIVE DASHBOARD
+========================================================== */
+
+@media (max-width: 1150px) {
+    .dashboard-filter-form {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-filter-actions {
+        grid-column: 1 / -1;
+    }
+
+    .summary-grid,
+    .coin-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .dashboard-navigation {
+        top: 68px;
+        padding: 0 18px;
+        overflow-x: auto;
+    }
+
+    .dashboard-navigation-button {
+        white-space: nowrap;
+    }
+
+    .dashboard-view {
+        width: calc(100% - 28px);
+        margin: 28px auto 50px;
+    }
+
+    .dashboard-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .dashboard-heading-button {
+        width: 100%;
+    }
+
+    .dashboard-panel {
+        padding: 20px;
+    }
+
+    .dashboard-filter-form {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-filter-actions {
+        grid-column: auto;
+        flex-direction: column;
+    }
+
+    .dashboard-filter-actions .primary-button,
+    .dashboard-filter-actions .outline-dark-button {
+        width: 100%;
+    }
+
+    .summary-grid,
+    .coin-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-heading-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .modal {
+        padding: 12px;
+    }
+
+    .modal-card {
+        max-height: calc(100vh - 24px);
+        border-radius: 16px;
+    }
+
+    .modal-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .modal-actions .primary-button,
+    .modal-actions .outline-dark-button {
+        width: 100%;
+    }
+}
+
+/* ============================================================
+   PERBAIKAN TAMPILAN FILTER DAN DOWNLOAD EXCEL
+============================================================ */
+
+.dashboard-filter-form {
+    display: grid;
+    grid-template-columns: repeat(
+        3,
+        minmax(0, 1fr)
+    );
+    gap: 22px;
+    align-items: end;
+}
+
+.dashboard-filter-form .form-group {
+    width: 100%;
+    min-width: 0;
+}
+
+.dashboard-filter-form input,
+.dashboard-filter-form select {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dashboard-filter-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 2px;
+}
+
+.dashboard-filter-actions button {
+    min-width: 140px;
+    min-height: 52px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+#downloadExcelButton {
+    min-width: 190px;
+    background: #111111;
+    border-color: #111111;
+    color: #ffffff;
+}
+
+#downloadExcelButton:hover {
+    background: #ffd400;
+    border-color: #ffd400;
+    color: #111111;
+}
+
+
+/* ============================================================
+   TAMPILAN TABLET
+============================================================ */
+
+@media (max-width: 1100px) {
+    .dashboard-filter-form {
+        grid-template-columns: repeat(
+            2,
+            minmax(0, 1fr)
+        );
+    }
+}
+
+
+/* ============================================================
+   TAMPILAN PONSEL
+============================================================ */
+
+@media (max-width: 700px) {
+    .dashboard-filter-form {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-filter-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dashboard-filter-actions button,
+    #downloadExcelButton {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+/* ============================================================
+   PERBAIKAN TOMBOL MUAT ULANG
+============================================================ */
+
+#refreshDashboardButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-width: 145px;
+    min-height: 46px;
+    padding: 11px 20px;
+
+    background: #ffffff;
+    color: #222222;
+
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+
+    box-shadow: 0 3px 10px
+        rgba(0, 0, 0, 0.05);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#refreshDashboardButton::before {
+    content: "\21BB";
+    display: inline-block;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+#refreshDashboardButton:hover {
+    background: #111111;
+    border-color: #111111;
+    color: #ffd400;
+
+    box-shadow: 0 7px 16px
+        rgba(0, 0, 0, 0.13);
+
+    transform: translateY(-1px);
+}
+
+#refreshDashboardButton:active {
+    transform: translateY(0);
+}
+
+
+/* ============================================================
+   PERBAIKAN TOMBOL RESET
+============================================================ */
+
+#resetDashboardFilterButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    min-width: 110px;
+    min-height: 48px;
+    padding: 11px 18px;
+
+    background: #f2f2f2;
+    color: #555555;
+
+    border: 1px solid #dedede;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+
+    box-shadow: none;
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+#resetDashboardFilterButton::before {
+    content: "\00D7";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+#resetDashboardFilterButton:hover {
+    background: #e7e7e7;
+    border-color: #c9c9c9;
+    color: #111111;
+    transform: translateY(-1px);
+}
+
+#resetDashboardFilterButton:active {
+    transform: translateY(0);
+}
+
+
+/* ============================================================
+   MENYAMAKAN TINGGI TOMBOL FILTER
+============================================================ */
+
+.dashboard-filter-actions .primary-button,
+.dashboard-filter-actions #resetDashboardFilterButton,
+.dashboard-filter-actions #downloadExcelButton {
+    min-height: 48px;
+    border-radius: 10px;
+}
+
+/* ============================================================
+   MODAL PENGELOLAAN AKUN
+============================================================ */
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.account-modal[hidden] {
+    display: none;
+}
+
+.account-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+}
+
+.account-modal-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(17, 17, 17, 0.68);
+    backdrop-filter: blur(4px);
+}
+
+.account-modal-card {
+    position: relative;
+    z-index: 1;
+
+    width: min(100%, 620px);
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+
+    padding: 32px;
+
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-top: 7px solid #ffd400;
+    border-radius: 18px;
+
+    box-shadow:
+        0 24px 70px
+        rgba(0, 0, 0, 0.25);
+}
+
+.account-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding-bottom: 22px;
+    margin-bottom: 24px;
+
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.account-modal-header h2 {
+    margin: 8px 0 8px;
+
+    color: #171717;
+    font-size: 30px;
+    line-height: 1.15;
+}
+
+.account-modal-header p:last-child {
+    margin: 0;
+
+    color: #676767;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.account-modal-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    background: #f3f3f3;
+    color: #333333;
+
+    border: 1px solid #dfdfdf;
+    border-radius: 50%;
+
+    font-family: Arial, sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.account-modal-close:hover {
+    background: #111111;
+    border-color: #111111;
+    color: #ffd400;
+    transform: rotate(5deg);
+}
+
+
+/* ============================================================
+   FORM AKUN
+============================================================ */
+
+.account-form {
+    display: grid;
+    grid-template-columns: repeat(
+        2,
+        minmax(0, 1fr)
+    );
+    gap: 20px;
+}
+
+.account-form .form-group {
+    margin: 0;
+    min-width: 0;
+}
+
+.account-form .form-group:first-child,
+.account-form .form-group:nth-child(2),
+.account-form .form-group:last-of-type {
+    grid-column: 1 / -1;
+}
+
+.account-form label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #222222;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.account-form input,
+.account-form select {
+    display: block;
+
+    width: 100%;
+    min-height: 50px;
+
+    padding: 12px 14px;
+
+    background: #ffffff;
+    color: #222222;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 10px;
+
+    box-sizing: border-box;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.account-form input:focus,
+.account-form select:focus {
+    background: #fffdf3;
+    border-color: #d2aa00;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(255, 212, 0, 0.18);
+}
+
+.account-form input::placeholder {
+    color: #a2a2a2;
+}
+
+.account-form .form-help {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #777777;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.account-form .required {
+    color: #be2424;
+}
+
+
+/* ============================================================
+   TOMBOL FORM AKUN
+============================================================ */
+
+.account-modal-actions {
+    grid-column: 1 / -1;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+
+    padding-top: 22px;
+    margin-top: 4px;
+
+    border-top: 1px solid #e7e7e7;
+}
+
+.account-modal-actions button {
+    min-width: 130px;
+    min-height: 48px;
+
+    padding: 11px 20px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#cancelCreateAccountButton {
+    background: #f1f1f1;
+    color: #555555;
+    border: 1px solid #dedede;
+}
+
+#cancelCreateAccountButton:hover {
+    background: #e5e5e5;
+    color: #111111;
+}
+
+#submitCreateAccountButton {
+    background: #ffd400;
+    color: #111111;
+    border: 1px solid #ffd400;
+
+    box-shadow:
+        0 5px 12px
+        rgba(190, 153, 0, 0.18);
+}
+
+#submitCreateAccountButton:hover {
+    background: #111111;
+    border-color: #111111;
+    color: #ffd400;
+}
+
+#submitCreateAccountButton:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+
+/* ============================================================
+   TAMPILAN PONSEL
+============================================================ */
+
+@media (max-width: 650px) {
+    .account-modal {
+        align-items: flex-end;
+        padding: 12px;
+    }
+
+    .account-modal-card {
+        width: 100%;
+        max-height: calc(100vh - 24px);
+
+        padding: 24px 20px;
+
+        border-radius: 16px;
+    }
+
+    .account-modal-header h2 {
+        font-size: 25px;
+    }
+
+    .account-form {
+        grid-template-columns: 1fr;
+    }
+
+    .account-form .form-group {
+        grid-column: 1;
+    }
+
+    .account-modal-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .account-modal-actions button {
+        width: 100%;
+    }
+}
+
+/* NOTIFIKASI HARUS TAMPIL DI ATAS MODAL */
+
+.notification {
+    z-index: 9999 !important;
+}
+
+/* ============================================================
+   PERBAIKAN TOMBOL BATAL PADA MODAL AKUN
+============================================================ */
+
+#cancelCreateAccountButton,
+#cancelEditAccountButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    min-width: 115px;
+    min-height: 46px;
+
+    padding: 11px 20px;
+    margin: 0;
+
+    background: #f2f2f2;
+    color: #555555;
+
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+
+    box-shadow: none;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+#cancelCreateAccountButton::before,
+#cancelEditAccountButton::before {
+    content: "\00D7";
+
+    margin-right: 7px;
+
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+#cancelCreateAccountButton:hover,
+#cancelEditAccountButton:hover {
+    background: #e5e5e5;
+    border-color: #cccccc;
+    color: #111111;
+
+    transform: translateY(-1px);
+}
+
+#cancelCreateAccountButton:active,
+#cancelEditAccountButton:active {
+    transform: translateY(0);
+}
+
+
+/* MENYAMAKAN TOMBOL SIMPAN */
+
+#saveEditAccountButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    min-width: 165px;
+    min-height: 46px;
+
+    padding: 11px 22px;
+    margin: 0;
+
+    background: #ffd400;
+    color: #111111;
+
+    border: 1px solid #ffd400;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 12px
+        rgba(190, 153, 0, 0.16);
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+#saveEditAccountButton:hover {
+    background: #111111;
+    border-color: #111111;
+    color: #ffd400;
+
+    transform: translateY(-1px);
+}
+
+#saveEditAccountButton:active {
+    transform: translateY(0);
+}
+
+#saveEditAccountButton:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+/* ============================================================
+   MODAL RESET PASSWORD
+============================================================ */
+
+.reset-password-card {
+    width: min(100%, 560px);
+}
+
+.reset-password-form {
+    grid-template-columns: 1fr;
+}
+
+.reset-password-form .form-group {
+    grid-column: 1;
+}
+
+.password-warning {
+    grid-column: 1;
+
+    padding: 16px 18px;
+
+    background: #fff9d9;
+    color: #4b4100;
+
+    border: 1px solid #f0d75e;
+    border-radius: 10px;
+}
+
+.password-warning strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.password-warning p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+#cancelResetPasswordButton {
+    min-width: 110px;
+    min-height: 46px;
+
+    padding: 11px 20px;
+
+    background: #f2f2f2;
+    color: #555555;
+
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#cancelResetPasswordButton:hover {
+    background: #e5e5e5;
+    color: #111111;
+}
+
+#saveResetPasswordButton {
+    min-width: 170px;
+    min-height: 46px;
+
+    padding: 11px 22px;
+
+    background: #ffd400;
+    color: #111111;
+
+    border: 1px solid #ffd400;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#saveResetPasswordButton:hover {
+    background: #111111;
+    border-color: #111111;
+    color: #ffd400;
+}
+
+#saveResetPasswordButton:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+/* ============================================================
+   GANTI PASSWORD SUPERADMIN
+============================================================ */
+
+.admin-heading-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+#changeMyPasswordButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 190px;
+    min-height: 48px;
+
+    padding: 11px 20px;
+
+    background: #ffffff;
+    color: #222222;
+
+    border: 1px solid #d6d6d6;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    box-shadow:
+        0 4px 10px
+        rgba(0, 0, 0, 0.05);
+}
+
+#changeMyPasswordButton::before {
+    content: "\1F512";
+    margin-right: 8px;
+    font-size: 15px;
+}
+
+#changeMyPasswordButton:hover {
+    background: #111111;
+    border-color: #111111;
+    color: #ffd400;
+}
+
+#cancelChangeMyPasswordButton {
+    min-width: 110px;
+    min-height: 46px;
+
+    padding: 11px 20px;
+
+    background: #f2f2f2;
+    color: #555555;
+
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#cancelChangeMyPasswordButton:hover {
+    background: #e5e5e5;
+    color: #111111;
+}
+
+#saveMyPasswordButton {
+    min-width: 165px;
+    min-height: 46px;
+
+    padding: 11px 22px;
+
+    background: #ffd400;
+    color: #111111;
+
+    border: 1px solid #ffd400;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#saveMyPasswordButton:hover {
+    background: #111111;
+    border-color: #111111;
+    color: #ffd400;
+}
+
+#saveMyPasswordButton:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+@media (max-width: 700px) {
+    .admin-heading-actions {
+        width: 100%;
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .admin-heading-actions button {
+        width: 100%;
+    }
+}
+
+/* ============================================================
+   TOMBOL KEMBALI — HITAM DENGAN TULISAN PUTIH
+   ============================================================ */
+
+.back-home-button,
+#backFromLandingButton,
+#backToLandingButton,
+#backFromLoginButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: auto;
+    min-height: 50px;
+    padding: 13px 24px;
+
+    background-color: #111111;
+    color: #ffffff;
+
+    border: 1px solid #111111;
+    border-radius: 12px;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 18px
+        rgba(0, 0, 0, 0.18);
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.back-home-button:hover,
+#backFromLandingButton:hover,
+#backToLandingButton:hover,
+#backFromLoginButton:hover {
+    background-color: #2b2b2b;
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 11px 24px
+        rgba(0, 0, 0, 0.24);
+}
+
+.back-home-button:active,
+#backFromLandingButton:active,
+#backToLandingButton:active,
+#backFromLoginButton:active {
+    background-color: #000000;
+    color: #ffffff;
+
+    transform: translateY(0);
+}
+
+.back-home-button:focus-visible,
+#backFromLandingButton:focus-visible,
+#backToLandingButton:focus-visible,
+#backFromLoginButton:focus-visible {
+    outline: 3px solid
+        rgba(17, 17, 17, 0.3);
+    outline-offset: 4px;
+}
+
+.back-home-button span {
+    color: inherit;
+}
+
+.back-home-icon {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .back-home-button,
+    #backFromLandingButton,
+    #backToLandingButton,
+    #backFromLoginButton {
+        width: 100%;
+        min-height: 48px;
+        padding: 12px 18px;
+        font-size: 15px;
+    }
+}
+
+/* ============================================================
+   TOMBOL HAPUS TRANSAKSI
+   ============================================================ */
+
+.table-action-button-danger {
+    background-color: #fff1f1;
+    color: #b42318;
+    border-color: #f2b8b5;
+}
+
+.table-action-button-danger:hover {
+    background-color: #b42318;
+    color: #ffffff;
+    border-color: #b42318;
+}
+
+.table-action-button-danger:disabled {
+    background-color: #eeeeee;
+    color: #888888;
+    border-color: #dddddd;
+    cursor: wait;
+}

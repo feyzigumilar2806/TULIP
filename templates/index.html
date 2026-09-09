@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- =====================================================
+         PENGATURAN HALAMAN
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="TULIP - Tukar Uang Logam Internal Prosegur"
+    >
+
+    <title>
+        TULIP | Tukar Uang Logam Internal Prosegur
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         NOTIFIKASI
+    ====================================================== -->
+
+    <div
+        id="notification"
+        class="notification"
+        role="alert"
+        aria-live="polite"
+        hidden
+    >
+        <span id="notificationMessage"></span>
+
+        <button
+            id="notificationCloseButton"
+            class="notification-close"
+            type="button"
+            aria-label="Tutup notifikasi"
+        >
+            &times;
+        </button>
+    </div>
+
+
+    <!-- =====================================================
+         HALAMAN PILIHAN UTAMA
+    ====================================================== -->
+
+    <main
+        id="landingPage"
+        class="landing-page"
+    >
+        <section class="landing-brand-section">
+            <div class="brand">
+                <div class="brand-symbol">
+                    T
+                </div>
+
+                <div>
+                    <p class="brand-company">
+                        PROSEGUR
+                    </p>
+
+                    <h1 class="brand-name">
+                        TULIP
+                    </h1>
+                </div>
+            </div>
+
+            <div class="landing-introduction">
+                <p class="login-label">
+                    APLIKASI INTERNAL
+                </p>
+
+                <h2>
+                    Tukar Uang Logam Internal Prosegur
+                </h2>
+
+                <p>
+                    Sistem pencatatan penyerahan uang logam,
+                    pemantauan transaksi, dan penyimpanan
+                    bukti penggantian secara terpusat.
+                </p>
+            </div>
+
+            <footer class="landing-footer">
+                <p>
+                    &copy;
+                    <span class="current-year"></span>
+                    PT Prosegur Cash Indonesia
+                </p>
+
+                <p>
+                    Versi {{ version }}
+                </p>
+            </footer>
+        </section>
+
+        <section class="landing-action-section">
+            <div class="landing-action-container">
+                <div class="landing-action-header">
+                    <p class="login-card-label">
+                        PILIH LAYANAN
+                    </p>
+
+                    <h2>
+                        Apa yang ingin Anda lakukan?
+                    </h2>
+
+                    <p>
+                        Pilih layanan sesuai dengan kebutuhan
+                        dan hak akses Anda.
+                    </p>
+                </div>
+
+                <div class="service-options">
+                    <button
+                        id="openHandoverButton"
+                        class="service-card service-card-primary"
+                        type="button"
+                    >
+                        <span class="service-number">
+                            01
+                        </span>
+
+                        <span class="service-content">
+                            <strong>
+                                Penyerahan Karyawan
+                            </strong>
+
+                            <small>
+                                Catat penyerahan uang logam
+                                dan unggah foto bukti.
+                            </small>
+                        </span>
+
+                        <span class="service-arrow">
+                            &rarr;
+                        </span>
+                    </button>
+
+                    <button
+                        id="openLoginButton"
+                        class="service-card"
+                        type="button"
+                    >
+                        <span class="service-number">
+                            02
+                        </span>
+
+                        <span class="service-content">
+                            <strong>
+                                Login Dashboard
+                            </strong>
+
+                            <small>
+                                Untuk kepala cabang, pusat,
+                                dan superadmin.
+                            </small>
+                        </span>
+
+                        <span class="service-arrow">
+                            &rarr;
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- =====================================================
+         FORM PENYERAHAN KARYAWAN
+    ====================================================== -->
+
+    <main
+        id="handoverPage"
+        class="form-page"
+        hidden
+    >
+        <header class="public-header">
+            <div class="application-brand">
+                <div class="brand-symbol brand-symbol-small">
+                    T
+                </div>
+
+                <div>
+                    <strong>
+                        TULIP
+                    </strong>
+
+                    <small>
+                        Form Penyerahan Uang Logam
+                    </small>
+                </div>
+            </div>
+
+            <button
+                id="backFromHandoverButton"
+                class="outline-button"
+                type="button"
+            >
+                Kembali
+            </button>
+        </header>
+
+        <section class="form-page-content">
+            <div class="form-heading">
+                <p class="login-card-label">
+                    FORM KARYAWAN
+                </p>
+
+                <h1>
+                    Penyerahan Uang Logam
+                </h1>
+
+                <p>
+                    Isi data dengan lengkap dan pastikan
+                    foto bukti penyerahan terlihat jelas.
+                </p>
+            </div>
+
+            <form
+                id="handoverForm"
+                class="handover-form"
+                enctype="multipart/form-data"
+            >
+                <!-- Informasi karyawan -->
+
+                <section class="form-card">
+                    <div class="form-card-header">
+                        <span class="form-step">
+                            01
+                        </span>
+
+                        <div>
+                            <h2>
+                                Informasi Karyawan
+                            </h2>
+
+                            <p>
+                                Masukkan identitas dan lokasi
+                                penyerahan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="branchId">
+                                Lokasi/Cabang
+                                <span class="required">*</span>
+                            </label>
+
+                            <select
+                                id="branchId"
+                                name="branch_id"
+                                required
+                            >
+                                <option value="">
+                                    Memuat cabang...
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="employeeName">
+                                Nama Karyawan
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                id="employeeName"
+                                name="employee_name"
+                                type="text"
+                                maxlength="200"
+                                placeholder="Masukkan nama lengkap"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="employeeNik">
+                                NIK
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                id="employeeNik"
+                                name="employee_nik"
+                                type="text"
+                                maxlength="100"
+                                placeholder="Masukkan NIK"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="unit">
+                                Unit Kerja
+                                <span class="required">*</span>
+                            </label>
+
+                            <select
+                                id="unit"
+                                name="unit"
+                                required
+                            >
+                                <option value="">
+                                    Memuat unit kerja...
+                                </option>
+                            </select>
+                        </div>
+
+                        <div
+                            id="operationSubunitGroup"
+                            class="form-group"
+                            hidden
+                        >
+                            <label for="operationSubunit">
+                                Sub-unit Operation
+                                <span class="required">*</span>
+                            </label>
+
+                            <select
+                                id="operationSubunit"
+                                name="operation_subunit"
+                            >
+                                <option value="">
+                                    Pilih sub-unit
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Rincian pecahan -->
+
+                <section class="form-card">
+                    <div class="form-card-header">
+                        <span class="form-step">
+                            02
+                        </span>
+
+                        <div>
+                            <h2>
+                                Rincian Uang Logam
+                            </h2>
+
+                            <p>
+                                Masukkan jumlah keping untuk
+                                setiap pecahan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="denomination-grid">
+                        <div class="denomination-item">
+                            <label for="qty100">
+                                Rp100
+                            </label>
+
+                            <input
+                                id="qty100"
+                                name="qty100"
+                                class="quantity-input"
+                                type="number"
+                                min="0"
+                                step="1"
+                                value="0"
+                            >
+
+                            <span>
+                                keping
+                            </span>
+                        </div>
+
+                        <div class="denomination-item">
+                            <label for="qty200">
+                                Rp200
+                            </label>
+
+                            <input
+                                id="qty200"
+                                name="qty200"
+                                class="quantity-input"
+                                type="number"
+                                min="0"
+                                step="1"
+                                value="0"
+                            >
+
+                            <span>
+                                keping
+                            </span>
+                        </div>
+
+                        <div class="denomination-item">
+                            <label for="qty500">
+                                Rp500
+                            </label>
+
+                            <input
+                                id="qty500"
+                                name="qty500"
+                                class="quantity-input"
+                                type="number"
+                                min="0"
+                                step="1"
+                                value="0"
+                            >
+
+                            <span>
+                                keping
+                            </span>
+                        </div>
+
+                        <div class="denomination-item">
+                            <label for="qty1000">
+                                Rp1.000
+                            </label>
+
+                            <input
+                                id="qty1000"
+                                name="qty1000"
+                                class="quantity-input"
+                                type="number"
+                                min="0"
+                                step="1"
+                                value="0"
+                            >
+
+                            <span>
+                                keping
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="total-card">
+                        <span>
+                            Total Penyerahan
+                        </span>
+
+                        <strong id="totalAmount">
+                            Rp0
+                        </strong>
+                    </div>
+                </section>
+
+
+                <!-- Bukti dan catatan -->
+
+                <section class="form-card">
+                    <div class="form-card-header">
+                        <span class="form-step">
+                            03
+                        </span>
+
+                        <div>
+                            <h2>
+                                Bukti Penyerahan
+                            </h2>
+
+                            <p>
+                                Unggah foto JPG, PNG, atau WEBP.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label
+                            class="file-upload"
+                            for="handoverPhoto"
+                        >
+                            <span class="file-upload-title">
+                                Pilih Foto Bukti
+                            </span>
+
+                            <span
+                                id="handoverFileName"
+                                class="file-upload-name"
+                            >
+                                Belum ada foto dipilih
+                            </span>
+                        </label>
+
+                        <input
+                            id="handoverPhoto"
+                            name="handover_photo"
+                            class="hidden-file-input"
+                            type="file"
+                            accept="image/jpeg,image/png,image/webp"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">
+                            Catatan
+                        </label>
+
+                        <textarea
+                            id="notes"
+                            name="notes"
+                            rows="4"
+                            maxlength="2000"
+                            placeholder="Catatan tambahan (opsional)"
+                        ></textarea>
+                    </div>
+                </section>
+
+
+                <!-- Konfirmasi -->
+
+                <div class="form-submit-section">
+                    <p>
+                        Pastikan seluruh informasi sudah benar
+                        sebelum menyimpan transaksi.
+                    </p>
+
+                    <button
+                        id="submitHandoverButton"
+                        class="primary-button submit-button"
+                        type="submit"
+                    >
+                        <span id="submitHandoverText">
+                            Simpan Penyerahan
+                        </span>
+
+                        <span
+                            id="submitHandoverLoading"
+                            hidden
+                        >
+                            Menyimpan...
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+
+    <!-- =====================================================
+         HASIL TRANSAKSI BERHASIL
+    ====================================================== -->
+
+    <main
+        id="handoverSuccessPage"
+        class="success-page"
+        hidden
+    >
+        <section class="success-card">
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <p class="login-card-label">
+                TRANSAKSI BERHASIL
+            </p>
+
+            <h1>
+                Penyerahan berhasil disimpan
+            </h1>
+
+            <p>
+                Simpan nomor transaksi berikut sebagai
+                bukti pencatatan.
+            </p>
+
+            <div class="transaction-number-card">
+                <span>
+                    Nomor Transaksi
+                </span>
+
+                <strong id="successTransactionId">
+                    -
+                </strong>
+            </div>
+
+            <div class="success-details">
+                <div>
+                    <span>
+                        Nama
+                    </span>
+
+                    <strong id="successEmployeeName">
+                        -
+                    </strong>
+                </div>
+
+                <div>
+                    <span>
+                        Cabang
+                    </span>
+
+                    <strong id="successBranch">
+                        -
+                    </strong>
+                </div>
+
+                <div>
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="successTotalAmount">
+                        Rp0
+                    </strong>
+                </div>
+
+                <div>
+                    <span>
+                        Status
+                    </span>
+
+                    <strong id="successStatus">
+                        -
+                    </strong>
+                </div>
+            </div>
+
+            <div class="success-actions">
+                <button
+                    id="createAnotherHandoverButton"
+                    class="primary-button"
+                    type="button"
+                >
+                    Buat Penyerahan Lagi
+                </button>
+
+                <button
+                    id="backToLandingButton"
+                    class="outline-dark-button"
+                    type="button"
+                >
+                    Kembali ke Halaman Utama
+                </button>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- =====================================================
+         HALAMAN LOGIN
+    ====================================================== -->
+
+    <main
+        id="loginPage"
+        class="login-page"
+        hidden
+    >
+        <section class="login-information">
+            <div class="brand">
+                <div class="brand-symbol">
+                    T
+                </div>
+
+                <div>
+                    <p class="brand-company">
+                        PROSEGUR
+                    </p>
+
+                    <h1 class="brand-name">
+                        TULIP
+                    </h1>
+                </div>
+            </div>
+
+            <div class="login-introduction">
+                <p class="login-label">
+                    DASHBOARD INTERNAL
+                </p>
+
+                <h2>
+                    Kelola transaksi uang logam
+                </h2>
+
+                <p>
+                    Akses dashboard disediakan untuk kepala
+                    cabang, pusat, dan superadmin.
+                </p>
+            </div>
+
+            <button
+                id="backFromLoginButton"
+                class="outline-dark-button login-back-button"
+                type="button"
+            >
+                Kembali ke Halaman Utama
+            </button>
+        </section>
+
+        <section class="login-form-section">
+            <div class="login-card">
+                <div class="login-card-header">
+                    <p class="login-card-label">
+                        SELAMAT DATANG
+                    </p>
+
+                    <h2>
+                        Masuk ke TULIP
+                    </h2>
+
+                    <p>
+                        Gunakan akun yang diberikan oleh
+                        administrator.
+                    </p>
+                </div>
+
+                <form
+                    id="loginForm"
+                    class="login-form"
+                    autocomplete="on"
+                >
+                    <div class="form-group">
+                        <label for="username">
+                            Username
+                        </label>
+
+                        <input
+                            id="username"
+                            name="username"
+                            type="text"
+                            minlength="3"
+                            maxlength="100"
+                            placeholder="Masukkan username"
+                            autocomplete="username"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="password-input-wrapper">
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                minlength="6"
+                                maxlength="200"
+                                placeholder="Masukkan password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                id="togglePasswordButton"
+                                class="password-toggle"
+                                type="button"
+                            >
+                                Lihat
+                            </button>
+                        </div>
+                    </div>
+
+                    <button
+                        id="loginButton"
+                        class="primary-button"
+                        type="submit"
+                    >
+                        <span id="loginButtonText">
+                            Masuk
+                        </span>
+
+                        <span
+                            id="loginLoading"
+                            hidden
+                        >
+                            Memeriksa...
+                        </span>
+                    </button>
+                </form>
+
+                <div class="login-help">
+                    <p>
+                        Mengalami kendala saat masuk?
+                    </p>
+
+                    <p>
+                        Hubungi Superadmin TULIP.
+                    </p>
+                </div>
+            </div>
+
+            <footer class="login-footer">
+                <p>
+                    &copy;
+                    <span class="current-year"></span>
+                    PT Prosegur Cash Indonesia
+                </p>
+
+                <p>
+                    Versi {{ version }}
+                </p>
+            </footer>
+        </section>
+    </main>
+
+
+    <!-- =====================================================
+         HALAMAN SETELAH LOGIN
+    ====================================================== -->
+
+    <main
+        id="applicationPage"
+        class="application-page"
+        hidden
+    >
+        <header class="application-header">
+            <div class="application-brand">
+                <div class="brand-symbol brand-symbol-small">
+                    T
+                </div>
+
+                <div>
+                    <strong>
+                        TULIP
+                    </strong>
+
+                    <small>
+                        Tukar Uang Logam Internal Prosegur
+                    </small>
+                </div>
+            </div>
+
+            <div class="application-user">
+                <div>
+                    <strong id="currentUserName">
+                        Pengguna
+                    </strong>
+
+                    <small id="currentUserInformation">
+                        Memuat akun...
+                    </small>
+                </div>
+
+                <button
+                    id="logoutButton"
+                    class="secondary-button"
+                    type="button"
+                >
+                    Keluar
+                </button>
+            </div>
+        </header>
+
+        <nav class="dashboard-navigation">
+            <button id="dashboardNavigationButton" class="dashboard-navigation-button active" type="button">
+                Dashboard
+            </button>
+            <button id="userManagementNavigationButton" class="dashboard-navigation-button" type="button" hidden>
+                Kelola Akun
+            </button>
+        </nav>
+
+        <section id="dashboardView" class="dashboard-view">
+            <div class="dashboard-heading">
+                <div>
+                    <p class="login-card-label">RINGKASAN TRANSAKSI</p>
+                    <h1>Dashboard TULIP</h1>
+                    <p id="dashboardDescription">Memuat data transaksi...</p>
+                </div>
+                <button id="refreshDashboardButton" class="outline-dark-button" type="button">
+                    Muat Ulang
+                </button>
+            </div>
+
+            <section class="dashboard-panel">
+                <div class="panel-heading">
+                    <h2>Filter Data</h2>
+                    <p>Cari transaksi berdasarkan tanggal, nama karyawan, atau cabang.</p>
+                </div>
+                <form id="dashboardFilterForm" class="dashboard-filter-form">
+                    <div class="form-group">
+                        <label for="filterStartDate">Tanggal Mulai</label>
+                        <input id="filterStartDate" name="start_date" type="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="filterEndDate">Tanggal Akhir</label>
+                        <input id="filterEndDate" name="end_date" type="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="filterEmployeeName">Nama Karyawan</label>
+                        <input id="filterEmployeeName" name="employee_name" type="text" maxlength="200" placeholder="Cari nama">
+                    </div>
+                    <div id="filterBranchGroup" class="form-group" hidden>
+                        <label for="filterBranchId">Cabang</label>
+                        <select id="filterBranchId" name="branch_id">
+                            <option value="">Semua cabang</option>
+                        </select>
+                    </div>
+                    <div class="dashboard-filter-actions">
+                        <button class="primary-button" type="submit">Terapkan</button>
+                        <button id="resetDashboardFilterButton" class="outline-dark-button" type="button">Reset</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="summary-grid">
+                <article class="summary-card">
+                    <span>Jumlah Transaksi</span>
+                    <strong id="summaryTransactionCount">0</strong>
+                    <small>Transaksi tercatat</small>
+                </article>
+                <article class="summary-card">
+                    <span>Total Penyerahan</span>
+                    <strong id="summaryTotalAmount">Rp0</strong>
+                    <small>Seluruh transaksi</small>
+                </article>
+                <article class="summary-card summary-card-success">
+                    <span>Sudah Diganti</span>
+                    <strong id="summaryPaidAmount">Rp0</strong>
+                    <small>Bukti transfer tersedia</small>
+                </article>
+                <article class="summary-card summary-card-warning">
+                    <span>Menunggu Penggantian</span>
+                    <strong id="summaryPendingAmount">Rp0</strong>
+                    <small>Belum diganti</small>
+                </article>
+            </section>
+
+            <section class="dashboard-panel">
+                <div class="panel-heading">
+                    <h2>Rekap Pecahan</h2>
+                    <p>Jumlah keping dan nominal setiap pecahan uang logam.</p>
+                </div>
+                <div class="coin-summary-grid">
+                    <article class="coin-summary-card">
+                        <span>Rp100</span>
+                        <strong id="denominationQty100">0 keping</strong>
+                        <small id="denominationAmount100">Rp0</small>
+                    </article>
+                    <article class="coin-summary-card">
+                        <span>Rp200</span>
+                        <strong id="denominationQty200">0 keping</strong>
+                        <small id="denominationAmount200">Rp0</small>
+                    </article>
+                    <article class="coin-summary-card">
+                        <span>Rp500</span>
+                        <strong id="denominationQty500">0 keping</strong>
+                        <small id="denominationAmount500">Rp0</small>
+                    </article>
+                    <article class="coin-summary-card">
+                        <span>Rp1.000</span>
+                        <strong id="denominationQty1000">0 keping</strong>
+                        <small id="denominationAmount1000">Rp0</small>
+                    </article>
+                </div>
+            </section>
+
+            <section class="dashboard-panel">
+                <div class="panel-heading">
+                    <h2>Daftar Transaksi</h2>
+                    <p id="transactionTableInformation">Memuat transaksi...</p>
+                </div>
+                <div class="table-container">
+                    <table class="transaction-table">
+                        <thead>
+                            <tr>
+                                <th>Transaksi</th><th>Karyawan</th><th>Cabang/Unit</th><th>Rincian</th><th>Total</th><th>Status</th><th>Bukti</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTableBody">
+                            <tr><td class="empty-table" colspan="7">Memuat data transaksi...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+
+        <section id="userManagementView" class="dashboard-view" hidden>
+            <div class="dashboard-heading">
+                <div>
+                    <p class="login-card-label">SUPERADMIN</p>
+                    <h1>Pengelolaan Akun</h1>
+                    <p>Buat, ubah, nonaktifkan, dan reset password pengguna TULIP.</p>
+                </div>
+                <button id="openCreateUserButton" class="primary-button dashboard-heading-button" type="button">
+                    Buat Akun Baru
+                </button>
+            </div>
+            <section class="dashboard-panel">
+                <div class="panel-heading">
+                    <h2>Daftar Pengguna</h2>
+                    <p>Password pengguna tidak ditampilkan dalam daftar ini.</p>
+                </div>
+                <div class="table-container">
+                    <table class="transaction-table">
+                        <thead>
+                            <tr><th>Username</th><th>Nama</th><th>Peran</th><th>Cabang</th><th>Status</th><th>Tindakan</th></tr>
+                        </thead>
+                        <tbody id="userTableBody">
+                            <tr><td class="empty-table" colspan="6">Memuat daftar pengguna...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+
+
+    <!-- =====================================================
+         FILE JAVASCRIPT
+    ====================================================== -->
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
