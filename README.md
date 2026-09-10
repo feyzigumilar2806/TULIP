@@ -29,6 +29,7 @@ Aplikasi ini digunakan untuk mencatat penyerahan uang logam dari karyawan, meman
 - Mengaktifkan atau menonaktifkan akun.
 - Mengatur ulang password akun.
 - Mengubah password sendiri.
+- Menghapus akun kecuali akun sendiri.
 
 ### Pusat
 
