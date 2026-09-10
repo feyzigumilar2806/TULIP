@@ -2660,3 +2660,176 @@ body.modal-open {
     border-color: #dddddd;
     cursor: wait;
 }
+
+/* ============================================================
+   PERBAIKAN ANGKA PILIHAN LAYANAN 01 DAN 02
+   ============================================================ */
+
+.service-card {
+    grid-template-columns:
+        48px
+        minmax(0, 1fr)
+        34px;
+
+    column-gap: 20px;
+    align-items: center;
+
+    min-height: 138px;
+    padding: 26px 28px;
+}
+
+.service-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    align-self: center;
+
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    background-color: #111111;
+    color: #ffd400;
+
+    border: 1px solid #111111;
+    border-radius: 12px;
+
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.5px;
+}
+
+.service-content {
+    justify-content: center;
+    gap: 9px;
+}
+
+.service-content strong {
+    font-size: 21px;
+    line-height: 1.25;
+}
+
+.service-content small {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.service-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    font-size: 23px;
+    line-height: 1;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.service-card:hover .service-arrow {
+    background-color: #111111;
+    color: #ffd400;
+    transform: translateX(3px);
+}
+
+
+/* ============================================================
+   PILIHAN LAYANAN PADA PONSEL
+   ============================================================ */
+
+@media (max-width: 600px) {
+    .service-card {
+        grid-template-columns:
+            40px
+            minmax(0, 1fr)
+            28px;
+
+        column-gap: 13px;
+
+        min-height: 120px;
+        padding: 20px;
+    }
+
+    .service-number {
+        width: 38px;
+        height: 38px;
+
+        border-radius: 10px;
+
+        font-size: 13px;
+    }
+
+    .service-content strong {
+        font-size: 18px;
+    }
+
+    .service-content small {
+        font-size: 13px;
+    }
+
+    .service-arrow {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+    }
+}
+
+/* ============================================================
+   MENYAMAKAN FONT TOMBOL DOWNLOAD EXCEL
+   ============================================================ */
+
+#downloadExcelButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-width: 190px;
+    min-height: 48px;
+    padding: 11px 20px;
+
+    background-color: #111111;
+    color: #ffffff;
+
+    border: 1px solid #111111;
+    border-radius: 10px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+#downloadExcelButton span {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+#downloadExcelButton span:first-child {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#downloadExcelButton:hover {
+    background-color: #ffd400;
+    color: #111111;
+    border-color: #ffd400;
+}

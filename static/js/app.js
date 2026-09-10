@@ -3300,6 +3300,20 @@ function createManagedAdminUserRow(
                 >
                     Reset Password
                 </button>
+
+                <button
+                    class="
+                        table-action-button
+                        account-delete-button
+                    "
+                    type="button"
+                    data-admin-action="delete"
+                    data-user-id="${escapeHtml(
+                        user.id
+                    )}"
+                >
+                    Hapus
+                </button>
             </div>
         `;
     }
@@ -3972,6 +3986,117 @@ async function toggleManagedAccountStatus(
 
 
 // ============================================================
+// MENGHAPUS AKUN
+// ============================================================
+
+async function deleteManagedAccount(
+    userId,
+    sourceButton
+) {
+    const user =
+        managedAdminUsers.find(
+            function (item) {
+                return (
+                    String(item.id)
+                    === String(userId)
+                );
+            }
+        );
+
+    if (!user) {
+        showNotification(
+            "Data akun tidak ditemukan.",
+            "error"
+        );
+
+        return;
+    }
+
+    if (user.role === "SUPERADMIN") {
+        showNotification(
+            "Akun Superadmin tidak dapat dihapus.",
+            "error"
+        );
+
+        return;
+    }
+
+    const confirmed = window.confirm(
+        `Apakah Anda yakin ingin menghapus akun `
+        + `"${user.username}"?\n\n`
+        + `Akun yang sudah dihapus tidak dapat `
+        + `dikembalikan.`
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    const originalText =
+        sourceButton?.textContent || "Hapus";
+
+    if (sourceButton) {
+        sourceButton.disabled = true;
+        sourceButton.textContent =
+            "Menghapus...";
+    }
+
+    try {
+        const response = await fetch(
+            `/api/admin/users/${
+                encodeURIComponent(user.id)
+            }`,
+            {
+                method: "DELETE",
+                headers:
+                    authorizationHeaders(),
+                cache: "no-store"
+            }
+        );
+
+        const data =
+            await readJsonResponse(
+                response
+            );
+
+        if (!response.ok) {
+            if (response.status === 401) {
+                handleExpiredSession();
+                return;
+            }
+
+            throw new Error(
+                getErrorMessage(
+                    data,
+                    "Akun gagal dihapus."
+                )
+            );
+        }
+
+        showNotification(
+            data.message
+                || "Akun berhasil dihapus.",
+            "success"
+        );
+
+        await loadAdminUsers();
+
+    } catch (error) {
+        showNotification(
+            error.message,
+            "error"
+        );
+
+        if (sourceButton) {
+            sourceButton.disabled = false;
+            sourceButton.textContent =
+                originalText;
+        }
+    }
+}
+
+
+// ============================================================
 // MENANGANI TOMBOL PADA TABEL AKUN
 // ============================================================
 
@@ -4010,9 +4135,13 @@ function handleManagedAccountAction(
     }
 
     if (action === "reset-password") {
-        showNotification(
-            "Form reset password akan diaktifkan pada tahap berikutnya.",
-            "error"
+        return;
+    }
+
+    if (action === "delete") {
+        deleteManagedAccount(
+            userId,
+            button
         );
     }
 }

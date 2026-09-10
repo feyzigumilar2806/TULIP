@@ -706,3 +706,90 @@ def change_admin_password(
             "Silakan login kembali."
         )
     )
+
+    # ============================================================
+# MENGHAPUS AKUN
+# HANYA UNTUK SUPERADMIN
+# ============================================================
+
+@router.delete(
+    "/users/{user_id}",
+    response_model=MessageResponse
+)
+def delete_admin_user(
+    user_id: UUID,
+
+    current_admin: Annotated[
+        User,
+        Depends(require_superadmin)
+    ],
+
+    database: Annotated[
+        Session,
+        Depends(get_database)
+    ]
+):
+    target_user = database.scalar(
+        select(User).where(
+            User.id == user_id
+        )
+    )
+
+    if target_user is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Akun tidak ditemukan."
+        )
+
+    if target_user.id == current_admin.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=(
+                "Superadmin tidak dapat "
+                "menghapus akunnya sendiri."
+            )
+        )
+
+    if (
+        target_user.role
+        == UserRole.SUPERADMIN
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=(
+                "Akun Superadmin tidak dapat "
+                "dihapus melalui menu ini."
+            )
+        )
+
+    deleted_username = (
+        target_user.username
+    )
+
+    try:
+        database.delete(
+            target_user
+        )
+
+        database.commit()
+
+    except IntegrityError:
+        database.rollback()
+
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=(
+                "Akun tidak dapat dihapus karena "
+                "sudah memiliki riwayat login atau "
+                "terhubung dengan transaksi. "
+                "Nonaktifkan akun tersebut sebagai gantinya."
+            )
+        )
+
+    return MessageResponse(
+        success=True,
+        message=(
+            f"Akun {deleted_username} "
+            "berhasil dihapus."
+        )
+    )
